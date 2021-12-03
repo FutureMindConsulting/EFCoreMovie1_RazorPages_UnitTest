@@ -1,0 +1,42 @@
+﻿@page
+@model EFCoreMovie1_RazorPages.GetMoviesModel
+@{ ViewData["Title"] = "GetMovies"; }
+
+<h1>List of movies</h1>
+<p>
+    <a asp-page="/Movies/Create">Create New Movie</a>
+</p>
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+        <a asp-page="GetMovies">Back to Full List </a>
+    </p>
+</form>
+<h4 style="color:red"> List of studios</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Title  </th>
+            <th> Studio ID </th>
+            <th> Year </th>
+            <th> Running time </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @*Please Uncomment the code below*@
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Movies )
+            {
+                <tr>
+                  <td> @item.Id </td>
+                  <td>  @item.Title </td>
+                  <td>@item.StudioId </td>
+                  <td>@item.Year </td>
+                  <td> @item.RunningTimeInMins </td>
+</tr>}}
+</table>
